@@ -1,0 +1,7 @@
+---
+- name: enable sanoid timer
+  become: true
+  ansible.builtin.systemd:
+    name: sanoid.timer
+    state: started
+    enabled: true

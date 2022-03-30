@@ -1,0 +1,16 @@
+---
+- hosts: server
+
+  pre_tasks:
+    - name: load configs
+      ansible.builtin.include_vars: "{{ item }}"
+      loop:
+        - config.yaml
+
+  tasks:
+    - name: install sanoid
+      ansible.builtin.import_tasks: tasks/install.yaml
+    - name: copy config
+      ansible.builtin.import_tasks: tasks/sanoid_config.yaml
+    - name: enable timer
+      ansible.builtin.import_tasks: tasks/systemd.yaml

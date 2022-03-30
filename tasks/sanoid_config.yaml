@@ -1,0 +1,7 @@
+---
+- name: copy sanoid config
+  ansible.builtin.template:
+    src: files/sanoid.conf
+    dest: /etc/sanoid/sanoid.conf
+    mode: "0644"
+  become: true
